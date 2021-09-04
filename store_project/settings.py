@@ -27,10 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'account.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     'customer.apps.CustomerConfig',
     'product.apps.ProductConfig',
     'order.apps.OrderConfig',
