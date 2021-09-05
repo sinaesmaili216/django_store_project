@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 <style>
     .product {
@@ -18,6 +20,48 @@
         float: right;
         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
     }
+
+
+    .dropbtn {
+      {#background-color: #3498DB;#}
+      color: black;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+        margin-right: 10px;
+
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
 </style>
 
 </head>
@@ -33,16 +77,24 @@
         </div>
 
             {% if user.is_authenticated %}
-            <nav>
-                <a class="btn btn-success" href="{% url 'customer:profile' %}"><h5>پروفایل</h5></a>
-                <a class="btn btn-success" href="{% url 'customer:logout' %}"><h5>خروج</h5></a>
-            </nav>
-            {% else %}
-            <nav>
-                <a class="btn btn-success" href="/customer/register/"><h5>ثبت نام</h5></a>
-                <a class="btn btn-success" href="/customer/login/"><h5>ورود</h5>
-            </a></nav>
+                    <div class="dropdown">
+                    <i onclick="myFunction()" style="font-size:30px" class='dropbtn fa'>&#xf007;</i>
+{#                      <button onclick="myFunction()" class="dropbtn">حساب کاربری</button>#}
+                      <div id="myDropdown" class="dropdown-content">
+                        <a href="{% url 'customer:profile' %}">پروفایل</a>
+                        <a href="{% url 'customer:logout' %}">خروج</a>
+                      </div>
+                    </div>
 
+            {% else %}
+                <div class="dropdown">
+                <i onclick="myFunction()" style="font-size:30px" class='dropbtn fa'>&#xf007;</i>
+{#                    <button onclick="myFunction()" class="dropbtn">حساب کاربری</button>#}
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="/customer/login/">ورود</a>
+                        <a href="/customer/register/">ثبت نام</a>
+                    </div>
+                </div>
             {% endif %}
     </div>
 
@@ -58,6 +110,31 @@
             <a class="btn"><h5>افزودن به سبد خرید</h5></a>
         </div>
     {% endfor %}
+
+<i style="font-size:35px" class="fa">&#xf007;</i>
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
 </body>
 </html>

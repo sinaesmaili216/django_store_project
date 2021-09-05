@@ -9,9 +9,15 @@
 
 </head>
 <body>
-    <h3>{{ customer.first_name }}</h3>
-    <h3>{{ customer.last_name }}</h3>
-    <h3>{{ customer.phone }}</h3>
+    <h3>نام : {{ customer.first_name }}</h3>
+    <h3>نام خانوادگی : {{ customer.last_name }}</h3>
+    <h3>شماره تلفن : {{ customer.phone }}</h3>
+
+    <form>
+        <input placeholder="{{ customer.first_name }}">
+        <input placeholder="{{ customer.last_name }}">
+        <input placeholder="{{ customer.phone }}">
+    </form>
 
     <a class="btn btn-success" href="{% url 'product:index' %}"><h3>خانه</h3></a>
 </body>
