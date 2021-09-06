@@ -68,7 +68,7 @@
 </head>
 <body>
 
-
+{% block navbar %}
     <div class="navbar">
         <div class="search-nav">
             <form method="post">
@@ -81,7 +81,6 @@
             {% if user.is_authenticated %}
                     <div class="dropdown">
                     <i onclick="myFunction()" style="font-size:30px" class='dropbtn fa'>&#xf007;</i>
-{#                      <button onclick="myFunction()" class="dropbtn">حساب کاربری</button>#}
                       <div id="myDropdown" class="dropdown-content">
                         <a href="{% url 'customer:profile' %}">پروفایل</a>
                         <a href="{% url 'customer:logout' %}">خروج</a>
@@ -91,7 +90,6 @@
             {% else %}
                 <div class="dropdown">
                 <i onclick="myFunction()" style="font-size:30px" class='dropbtn fa'>&#xf007;</i>
-{#                    <button onclick="myFunction()" class="dropbtn">حساب کاربری</button>#}
                     <div id="myDropdown" class="dropdown-content">
                         <a href="/customer/login/">ورود</a>
                         <a href="/customer/register/">ثبت نام</a>
@@ -99,6 +97,7 @@
                 </div>
             {% endif %}
     </div>
+{% endblock %}
 
     {% block body %}{% endblock %}
 
