@@ -78,6 +78,8 @@
             </form>
         </div>
 
+        <a href="{% url 'order:cart-items' %}"><i class="fa fa-shopping-cart" style="font-size:36px; margin-left: 850px"></i></a>
+
             {% if user.is_authenticated %}
                     <div class="dropdown">
                     <i onclick="myFunction()" style="font-size:30px" class='dropbtn fa'>&#xf007;</i>
