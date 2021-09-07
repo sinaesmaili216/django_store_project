@@ -27,7 +27,7 @@
                 <p>{{ product.description }}</p>
                 <h4 style="margin-left: 230px">قیمت</h4>
                 <h4 style="position: relative; top: -35px; margin-right: 230px">{{ product.price }}</h4>
-                <a class="btn btn-success" style="position: relative; top: -15px">نهایی کردن خرید</a>
+                <a href="{% url 'order:order' product.id %}" class="btn btn-success" style="position: relative; top: -15px">نهایی کردن خرید</a>
 
             </div>
         </div>
