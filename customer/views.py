@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from account.models import User
+from order.models import Order
 from .forms import RegisterCustomer, LoginCustomer
 from .models import Customer
 
@@ -22,7 +23,7 @@ def register_customer(request):
         create_customer.save()
         login(request, create_user)
 
-        return redirect('product:index')
+        return redirect('home')
 
     return render(request, 'customer/register_customer.html', context={})
 
@@ -34,7 +35,7 @@ def login_customer(request):
         user = authenticate(email=email, password=password)
         if user:
             login(request, user)
-            return redirect('product:index')
+            return redirect('home')
         else:
             return HttpResponse('email or password is incorrect')
 
@@ -43,13 +44,14 @@ def login_customer(request):
 
 def logout_customer(request):
     logout(request)
-    return redirect('product:index')
+    return redirect('home')
 
 
 def profile(request):
     user = request.user
     customer = Customer.objects.get(user=user)
-    return render(request, 'customer/profile.html', context={'customer': customer})
+    orders = Order.objects.filter(costumer__user_id=user.id)
+    return render(request, 'customer/profile.html', context={'customer': customer, 'orders': orders})
 
 
 def edit_profile(request):

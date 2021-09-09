@@ -1,18 +1,66 @@
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block body %}#}
+{#    <div class="product" style="width: 75%; height: 200px; float: right; margin-right: 40px">#}
+{#            <div style="text-align: right">#}
+{#                <img style="height: 150px" src="/media/{{ product.image }}" />#}
+{#            </div>#}
+{#            <div style="text-align: center">#}
+{#                <h4 style="position:relative; top: -130px; left: 210px">{{ product.name }}</h4>#}
+{##}
+{#                <h6 style="position:relative; top: -120px; left: 150px">{{ product.description }}</h6>#}
+{#                <h6 style="position:relative; top: -115px; left: 190px">گارانتی اصالت و سلامت فیزیکی کالا</h6>#}
+{#                <h6 style="position:relative; top: -100px; left: 275px">قیمت واحد</h6>#}
+{#                <h6 style="position: relative;top: -125px; left: 180px">{{ product.price }}</h6>#}
+{#                <form style="position: relative;top: -120px; right: 400px" action="{% url 'order_detail' product.id %}" method="post">#}
+{#                    <input type="submit"  class="btn btn-info" value="ادامه فرایند خرید">#}
+{#                    <input name="quantity" style="width: 60px" type="number">#}
+{#                    <label for="quantity">تعداد</label>#}
+{#                </form>#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#{% endblock %}#}
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block extra_head_panel %}{% endblock %}
+
 
 {% block body %}
-    <div class="product" style="width: 75%; height: 200px; float: right; margin-right: 40px">
-            <div style="text-align: right">
-                <img style="height: 150px" src="/media/{{ product.image }}" />
-            </div>
-            <div style="text-align: center">
-                <h4 style="position:relative; top: -130px; left: 210px">{{ product.name }}</h4>
+    <form method="post" action="{% url 'order' product.id %}">
+    {% csrf_token %}
+    <div class="container" style="padding-top: 5rem; padding-left: 5rem">
+            <div class="row" style="background-color: white">
 
-{#                <h6 style="position:relative; top: -120px; left: 150px">{{ product.description }}</h6>#}
-                <h6 style="position:relative; top: -115px; left: 190px">گارانتی اصالت و سلامت فیزیکی کالا</h6>
-                <h6 style="position:relative; top: -100px; left: 275px">قیمت واحد</h6>
-                <h6 style="position: relative;top: -125px; left: 180px">{{ product.price }}</h6>
-                <a style="position: relative;top: -120px; right: 400px" class="btn btn-info">ادامه فرایند خرید</a>
+                <div class="col-lg-2 border">
+                    <p class="h3c" style="text-align: center">تعداد</p>
+                    <input name="quantity" style="width: 60px; margin-left: 45px" type="number">
+                </div>
+
+                <div class="col-lg-2 border">
+                    <p class="h3c" style="text-align: center">کد تخفیف</p>
+                    <input name="discount-code" style="width: 60px; margin-left: 45px" type="text">
+                </div>
+
+                <div class="col-lg-2 border">
+                    <p class="h3c" style="text-align: center">قیمت </p>
+                    <h5 class="pc" style="text-align: center">{{ product.price }}</h5>
+                </div>
+
+                <div class="col-lg-2 border">
+                    <p class="h3c" style="text-align: center">محصول </p>
+                    <h5 class="pc" style="text-align: center">{{ product.name }}</h5>
+                </div>
+
+
+                 <div class="col-lg-2 border">
+                     <img style="position:relative; left: 55px; margin-top: 10px" src="{{ product.image.url }}" width="50" height="50">
+                </div>
             </div>
-        </div>
+    </div>
+    <input style="margin-left: 11rem; margin-top: 1rem" type="submit" class="btn btn-success">
+        </form>
+{#    <a href="{% url 'payment' product.id %}" class="btn btn-success" style="position: relative; left: 170px; margin-top: 20px">پرداخت</a>#}
 {% endblock %}

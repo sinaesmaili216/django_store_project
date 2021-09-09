@@ -17,14 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from product.views import index
+# from product.views import index
+from product.api.views import HomePagination
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    path('', HomePagination.as_view()),
     path('customer/', include('customer.urls')),
     path('product/', include('product.urls')),
-    path('order/', include('order.urls')),
+    path('order/', include('order.api.urls')),
     path('api/', include('core.api.urls'))
 ]
 

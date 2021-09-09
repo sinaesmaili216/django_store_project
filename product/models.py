@@ -25,7 +25,10 @@ class Product(models.Model):
 class DiscountCode(models.Model):
     code_name = models.CharField(max_length=6)
     product = models.OneToOneField(Product, on_delete=models.CASCADE)
+    percent = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.code_name} {self.product}'
+
+
 
