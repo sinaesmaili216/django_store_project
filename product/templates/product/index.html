@@ -1,16 +1,44 @@
 {% extends 'base.html' %}
 
 {% block body %}
+    <style>
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        .modal {
+            text-align: right;
+            position: relative;
+            top: 10px;
+        }
+    </style>
+     <div class="navbar">
+        <h6 id="category" style="margin-left: 1150px; margin-top: 5px">دسته بندی کالاها</h6>
+        <i class="fa fa-bars"></i>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span style="margin-right: 25px" class="close">&times;</span>
+                {% for category in categories %}
+                <a href="{% url 'product:category_products' category.name %}"><h6 style="margin-right: 25px; margin-top: 10px; color: #000000">{{ category }}</h6></a>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
     {% for product in products %}
-        <div class="product">
+        <div style="width: 307px; height: 424px" class="product">
             <div style="text-align: center">
                 <img src="{{ product.image.url }}" />
             </div>
             <h3 style="text-align: center">{{ product.name }}</h3>
-            <p>{{ product.description }}</p><br>
-            <p>{{ product.price }}</p>
-            <a href="{% url 'cart' product.id%}" class="btn"><h5>افزودن به سبد خرید</h5></a>
+            <p style="text-align: center">{{ product.description }}</p>
+            <h6 style="position: relative; top: 25px; left: 80px">قیمت</h6>
+            <h6 style="margin-left: 5px">{{ product.price }}</h6>
+            <a style="position: relative; left: 55px" href="{% url 'cart' product.id%}" class="btn"><h5>افزودن به سبد خرید</h5></a>
         </div>
     {% endfor %}
 
 {% endblock %}
+

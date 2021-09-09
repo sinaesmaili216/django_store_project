@@ -18,7 +18,7 @@
 
 {% block body %}
     {% for product in products %}
-        <div class="product" style="width: 25%; float: right">
+        <div class="product" style="width: 307px; float: right">
             <div style="text-align: center">
                 <img src="{{ product.image }}" />
             </div>
@@ -26,8 +26,8 @@
                 <h3 style="text-align: center">{{ product.name }}</h3>
                 <p>{{ product.description }}</p>
                 <h4 style="margin-left: 230px">قیمت</h4>
-                <h4 style="position: relative; top: -35px; margin-right: 230px">{{ product.price }}</h4>
-                <a href="{% url 'order:order' product.id %}" class="btn btn-success" style="position: relative; top: -15px">نهایی کردن خرید</a>
+                <h4 style="position: relative; top: -35px; margin-right: 200px">{{ product.price }}</h4>
+                <a  href="{% url 'order:order' product.id %}" class="btn btn-info" style="position: relative; top: -15px">نهایی کردن خرید</a>
 
             </div>
         </div>

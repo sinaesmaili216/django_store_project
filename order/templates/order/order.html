@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="product" style="width: 75%; height: 250px; float: right; margin-right: 40px">
+    <div class="product" style="width: 75%; height: 200px; float: right; margin-right: 40px">
             <div style="text-align: right">
                 <img style="height: 150px" src="/media/{{ product.image }}" />
             </div>
             <div style="text-align: center">
-                <h4 style="position:relative; top: -130px; left: 200px">{{ product.name }}</h4>
-                <h6 style="position:relative; top: -120px; left: 150px">{{ product.description }}</h6>
-                <h6 style="position:relative; top: -120px; left: 280px">چند رنگ</h6>
-                <h6 style="position:relative; top: -120px; left: 190px">گارانتی اصالت و سلامت فیزیکی کالا</h6>
+                <h4 style="position:relative; top: -130px; left: 210px">{{ product.name }}</h4>
+
+{#                <h6 style="position:relative; top: -120px; left: 150px">{{ product.description }}</h6>#}
+                <h6 style="position:relative; top: -115px; left: 190px">گارانتی اصالت و سلامت فیزیکی کالا</h6>
                 <h6 style="position:relative; top: -100px; left: 275px">قیمت واحد</h6>
                 <h6 style="position: relative;top: -125px; left: 180px">{{ product.price }}</h6>
-                <a style="position: relative;top: -125px; right: 400px" class="btn btn-info">ادامه فرایند خرید</a>
+                <a style="position: relative;top: -120px; right: 400px" class="btn btn-info">ادامه فرایند خرید</a>
             </div>
         </div>
 {% endblock %}

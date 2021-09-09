@@ -22,6 +22,9 @@
         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
     }
 
+    .top-nav {
+        background: gray;
+    }
 
     .dropbtn {
       {#background-color: #3498DB;#}
@@ -69,16 +72,18 @@
 <body>
 
 {% block navbar %}
-    <div class="navbar">
+    <div class="navbar top-nav">
         <div class="search-nav">
             <form method="post">
                 {% csrf_token %}
-                <input name="search" type="search" placeholder="جستوجو" >
+                <input name="search" type="search" placeholder="جستوجو" style="border-radius: 5px; height: 35px">
                 <button class="btn btn-secondary " type="submit">پیداکن</button>
             </form>
         </div>
 
-        <a href="{% url 'order:cart-items' %}"><i class="fa fa-shopping-cart" style="font-size:36px; margin-left: 850px"></i></a>
+        <a href="{% url 'order:cart-items' %}"><i class="fa fa-shopping-cart" style="font-size:36px; margin-left: 890px; color: #333333"></i></a>
+
+
 
             {% if user.is_authenticated %}
                     <div class="dropdown">
@@ -88,10 +93,10 @@
                         <a href="{% url 'customer:logout' %}">خروج</a>
                       </div>
                     </div>
-
+{# style="font-size:30px; position:relative; top: -45px; left: 1170px"#}
             {% else %}
                 <div class="dropdown">
-                <i onclick="myFunction()" style="font-size:30px" class='dropbtn fa'>&#xf007;</i>
+                <i onclick="myFunction()" style="font-size:30px;" class='dropbtn fa'>&#xf007;</i>
                     <div id="myDropdown" class="dropdown-content">
                         <a href="/customer/login/">ورود</a>
                         <a href="/customer/register/">ثبت نام</a>
@@ -99,31 +104,46 @@
                 </div>
             {% endif %}
     </div>
+
 {% endblock %}
 
     {% block body %}{% endblock %}
 
 
 <script>
+    var modal = document.getElementById('myModal')
+    var cat_click = document.getElementById('category')
+    var span = document.getElementsByClassName('close')[0]
+
+    cat_click.onclick = function () {
+        modal.style.display = 'block'
+    }
+
+    span.onclick = function () {
+        modal.style.display = 'none'
+    }
+
+
+
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
       }
     }
-  }
-}
 </script>
 
 

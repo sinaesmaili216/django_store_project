@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% for product in products %}
+        <div style="width: 307px;" class="product">
+            <div style="text-align: center">
+                <img src="{{ product.image.url }}" />
+            </div>
+            <h3 style="text-align: center">{{ product.name }}</h3>
+            <p style="text-align: center">{{ product.description }}</p>
+            <h6 style="position: relative; top: 25px; left: 80px">قیمت</h6>
+            <h6 style="margin-left: 5px">{{ product.price }}</h6>
+            <a style="position: relative; left: 55px" href="{% url 'cart' product.id%}" class="btn"><h5>افزودن به سبد خرید</h5></a>
+        </div>
+    {% endfor %}
+{% endblock %}
