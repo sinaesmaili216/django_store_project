@@ -85,9 +85,6 @@
                     </div>
                 </div>
                 <a href="{% url 'customer:edit_profile' %}">ویرایش اصلاعات شخصی</a>
-{#                <div class="row border-bottom align-items-center">#}
-{#                    <a href="#" style="color: #0056b3">{% trans 'see all user specification' %}</a>#}
-{#                </div>#}
             </div>
         </div>
         <br><br><br>
@@ -97,6 +94,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>#</th>
+                            <th>محصول</th>
                             <th>تاریخ سفارش</th>
                             <th>وضعیت</th>
 {#                            <th>{% trans 'Details' %}</th>#}
@@ -106,8 +104,9 @@
                         {% for order in orders %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ order.placed_at }}</td>
-                                <td>{{ order.payment_status }}</td>
+                                <td>{{ order.product}}</td>
+                                <td>{{ order.order.placed_at }}</td>
+                                <td>{{ order.order.payment_status }}</td>
 {#                                <td><a href="{% url 'Order:detail' order.pk %}">{% trans 'Details' %}</a></td>#}
                             </tr>
                         {% endfor %}
