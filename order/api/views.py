@@ -37,8 +37,11 @@ def order(request, pk):
     product = Product.objects.get(id=pk)
     if request.method == 'POST':
         quantity = int(request.POST.get('quantity'))
-        discount = DiscountCode.objects.get(code_name=request.POST.get('discount-code'))
-        discount = discount.percent
+        try:
+            discount = DiscountCode.objects.get(code_name=request.POST.get('discount-code'))
+            discount = discount.percent
+        except DiscountCode.DoesNotExist:
+            discount = 0
         final_price = quantity * product.price * (100 - discount) / 100
 
         return render(request, 'order/order_payment.html',

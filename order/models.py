@@ -62,16 +62,16 @@ class OrderItem(models.Model):
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     #address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
-    PAYMENT_STATUS_PENDING = 'P'
-    PAYMENT_STATUS_COMPLETE = 'C'
-    PAYMENT_STATUS_DELIVERED = 'D'
+    PAYMENT_STATUS_PENDING = 'در انتظار'
+    PAYMENT_STATUS_COMPLETE = 'تایید شده'
+    PAYMENT_STATUS_DELIVERED = 'تحویل داده شد'
 
     PAYMENT_CHOICES = [
-        (PAYMENT_STATUS_PENDING, 'Pending'),
-        (PAYMENT_STATUS_COMPLETE, 'Complete'),
-        (PAYMENT_STATUS_DELIVERED, 'Delivered')
+        (PAYMENT_STATUS_PENDING, 'در انتظار'),
+        (PAYMENT_STATUS_COMPLETE, 'تایید شده'),
+        (PAYMENT_STATUS_DELIVERED, 'تحویل داده شد')
     ]
-    payment_status = models.CharField(max_length=1, choices=PAYMENT_CHOICES, default=PAYMENT_STATUS_PENDING)
+    payment_status = models.CharField(max_length=50, choices=PAYMENT_CHOICES, default=PAYMENT_STATUS_PENDING)
     products = models.ManyToManyField(Product)
     placed_at = models.DateTimeField(auto_now_add=True)
 

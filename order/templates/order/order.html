@@ -36,12 +36,12 @@
 
                 <div class="col-lg-2 border">
                     <p class="h3c" style="text-align: center">تعداد</p>
-                    <input name="quantity" style="width: 60px; margin-left: 45px" type="number">
+                    <input name="quantity" style="width: 60px; margin-left: 45px" type="number" required>
                 </div>
 
                 <div class="col-lg-2 border">
                     <p class="h3c" style="text-align: center">کد تخفیف</p>
-                    <input name="discount-code" style="width: 60px; margin-left: 45px" type="text">
+                    <input name="discount-code" style="width: 60px; margin-left: 45px" type="text" >
                 </div>
 
                 <div class="col-lg-2 border">
@@ -60,7 +60,7 @@
                 </div>
             </div>
     </div>
-    <input style="margin-left: 11rem; margin-top: 1rem" type="submit" class="btn btn-success">
+    <input style="margin-left: 11rem; margin-top: 1rem" type="submit" class="btn btn-success" value="خرید">
         </form>
 {#    <a href="{% url 'payment' product.id %}" class="btn btn-success" style="position: relative; left: 170px; margin-top: 20px">پرداخت</a>#}
 {% endblock %}
