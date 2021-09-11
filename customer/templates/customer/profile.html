@@ -1,90 +1,34 @@
-{#{% extends 'base.html' %}#}
-{#{% load static %}#}
-{#{% block head %}#}
-{#    <link rel="stylesheet" href="{% static 'customer/css/profile_style.css' %}" />#}
-{#    <meta charset="UTF-8">#}
-{#    <title>Index</title>#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1">#}
-{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
-{#    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">#}
-{#    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>#}
-{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>#}
-{#    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>#}
-{#{% endblock %}#}
-{#{% block body %}#}
-{#    <div class="page-content page-container" id="page-content">#}
-{#    <div class="padding">#}
-{#        <div class="row container d-flex justify-content-center">#}
-{#            <div class="col-xl-6 col-md-12">#}
-{#                <div class="card user-card-full">#}
-{#                    <div class="row m-l-0 m-r-0">#}
-{#                        <div class="col-sm-8">#}
-{#                            <div class="card-block">#}
-{#                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600">اطلاعات شخصی</h6>#}
-{#                                <div class="row">#}
-{#                                    <div class="col-sm-6">#}
-{#                                        <p class="m-b-10 f-w-600">نام</p>#}
-{#                                        <h6 class="text-muted f-w-400">{{ customer.first_name }}</h6>#}
-{#                                    </div>#}
-{#                                    <div class="col-sm-6">#}
-{#                                        <p class="m-b-10 f-w-600">نام خانوادگی</p>#}
-{#                                        <h6 class="text-muted f-w-400">{{ customer.last_name }}</h6>#}
-{#                                    </div>#}
-{##}
-{#                                </div>#}
-{#                                <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600"></h6>#}
-{#                                <div class="row">#}
-{#                                     <div class="col-sm-6">#}
-{#                                        <p class="m-b-10 f-w-600">تلفن</p>#}
-{#                                        <h6 class="text-muted f-w-400">{{ customer.phone }}</h6>#}
-{#                                    </div>#}
-{##}
-{#                                </div>#}
-{#                                <div class="edit">#}
-{#                                    <a href="{% url 'customer:edit_profile' %}">ویرایش اطلاعات شخصی</a>#}
-{#                                </div>#}
-{##}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-{#    </div>#}
-{##}
-{#{% endblock %}#}
+
 {% extends 'base.html' %}
 {% load static %}
-{% load i18n %}
 
-{% block extra_head_panel %}
-    <title>{% block title_panel %}{% trans 'Dashboard' %}{% endblock %}</title>
-    <link href="{% static 'css/Dashboard.css' %}" rel="stylesheet">
-{% endblock %}
+
 {% block body %}
     <div class="container" style="padding-top: 4rem">
         <div class="row">
             <div class="col-12">
                 <div class="row border-bottom">
                     <div class="col-lg-6 col-sm-12 border-right">
-                        <p class="h3c">{% trans 'نام' %}</p>
+                        <p class="h3c">نام</p>
                         <h5 class="pc">{{ customer.first_name }}</h5>
                     </div>
                     <div class="col-lg-6 col-sm-12">
-                        <p class="h3c">{% trans 'نام خانوادگی' %}</p>
+                        <p class="h3c">نام خانوادگی</p>
                         <h5 class="pc">{{ customer.last_name }}</h5>
                     </div>
                 </div>
                 <div class="row border-bottom">
                     <div class="col-lg-6 col-sm-12 border-right">
-                        <p class="h3c">{% trans 'ایمیل' %}</p>
+                        <p class="h3c">ایمیل</p>
                         <h5 class="pc">{{ user.email }}</h5>
                     </div>
                     <div class="col-lg-6 col-sm-12">
-                        <p class="h3c">{% trans 'شماره تلفن' %}</p>
+                        <p class="h3c">شماره تلفن</p>
                         <h5 class="pc">{{ customer.phone }}</h5>
                     </div>
                 </div>
                 <a href="{% url 'customer:edit_profile' %}">ویرایش اصلاعات شخصی</a>
+                <a href="{% url 'change-password' %}">تغییر رمز عبور</a>
             </div>
         </div>
         <br><br><br>
