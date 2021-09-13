@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+     <div class="row">
+            <div class="col-12">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>#</th>
+                            <th>محصول</th>
+                            <th>تاریخ سفارش</th>
+                            <th>آدرس</th>
+                            <th>تعداد</th>
+                            <th>وضعیت</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orderitems %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ order.product}}</td>
+                                <td>{{ order.order.placed_at }}</td>
+                                <td>{{ order.order.address }}</td>
+                                <td>{{ order.quantity }}</td>
+                                <td>{{ order.order.payment_status }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+{% endblock %}

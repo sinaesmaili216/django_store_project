@@ -89,7 +89,9 @@
                     <div class="dropdown">
                     <i onclick="myFunction()" style="font-size:30px" class='dropbtn fa'>&#xf007;</i>
                       <div id="myDropdown" class="dropdown-content">
+                          {% if not user.is_admin %}
                         <a href="{% url 'customer:profile' %}">پروفایل</a>
+                          {% endif %}
                         <a href="{% url 'customer:logout' %}">خروج</a>
                       </div>
                     </div>

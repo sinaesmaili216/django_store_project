@@ -52,8 +52,14 @@ def logout_customer(request):
 def profile(request):
     user = request.user
     customer = Customer.objects.get(user=user)
-    orders = OrderItem.objects.filter(order__customer__user_id=user.id)
-    return render(request, 'customer/profile.html', context={'customer': customer, 'orders': orders})
+    orderitems = OrderItem.objects.filter(order__customer__user_id=user.id)[:5]
+    return render(request, 'customer/profile.html', context={'customer': customer, 'orderitems': orderitems})
+
+
+def order_history(request):
+    orderitems = OrderItem.objects.filter(order__customer__user_id=request.user.id)
+    return render(request, 'customer/order_history.html', context={'orderitems': orderitems})
+
 
 
 def edit_profile(request):

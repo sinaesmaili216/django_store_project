@@ -30,7 +30,10 @@ def cart(request, pk):
 @api_view(['GET', 'POST'])
 @permission_classes((permissions.AllowAny,))
 def cart_items(request):
-    products = request.session['products']['products']
+    try:
+        products = request.session['products']['products']
+    except KeyError:
+        products = None
     return render(request, 'order/show_cart_items.html', context={'products': products})
 
 
@@ -40,8 +43,8 @@ def cart_items(request):
 def order(request, pk):
     product = Product.objects.get(id=pk)
     addresses = Address.objects.filter(customer__user=request.user)
-
     if request.method == 'POST':
+        print(request.POST.get('address'))
         quantity = int(request.POST.get('quantity'))
         try:
             discount = DiscountCode.objects.get(code_name=request.POST.get('discount-code'))
