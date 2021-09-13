@@ -17,3 +17,4 @@ class HomePagination(generic.ListView):
             'products': products,
         }
         return context
+

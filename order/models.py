@@ -59,9 +59,11 @@ class OrderItem(models.Model):
     def __str__(self):
         return self.product.name
 
+
 class Order(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    #address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
+    # address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
+    address = models.CharField(max_length=255, null=True)
     PAYMENT_STATUS_PENDING = 'در انتظار'
     PAYMENT_STATUS_COMPLETE = 'تایید شده'
     PAYMENT_STATUS_DELIVERED = 'تحویل داده شد'

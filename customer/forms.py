@@ -1,5 +1,5 @@
 from django import forms
-from .models import Customer
+from .models import Customer, Address
 
 
 class RegisterCustomer(forms.ModelForm):
@@ -18,4 +18,10 @@ class LoginCustomer(forms.ModelForm):
         model = Customer
         fields = ('email',)
         labels = {'email': 'ایمیل'}
+
+
+class AddressForm(forms.ModelForm):
+    class Meta:
+        model = Address
+        fields = ('city', 'street')
 

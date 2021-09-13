@@ -32,11 +32,11 @@
             <div style="text-align: center">
                 <img src="{{ product.image.url }}" />
             </div>
-            <h3 style="text-align: center">{{ product.name }}</h3>
+            <h3 style="text-align: center">{{ product.name.url }}</h3>
             <p style="text-align: center">{{ product.description }}</p>
-            <h6 style="position: relative; top: 25px; left: 80px">قیمت</h6>
-            <h6 style="margin-left: 5px">{{ product.price }}</h6>
-            <a style="position: relative; left: 55px" href="{% url 'cart' product.id%}" class="btn"><h5>افزودن به سبد خرید</h5></a>
+            <h6 style="position: relative; top: 25px; left: 250px">قیمت</h6>
+            <h6 style="margin-left: 170px">{{ product.price }}</h6>
+            <a style="position: relative; left: 55px;top: 20px" href="{% url 'cart' product.id%}" class="btn btn-info"><h5>افزودن به سبد خرید</h5></a>
         </div>
     {% endfor %}
 

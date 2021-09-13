@@ -3,8 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from account.models import User
 from order.models import Order, OrderItem
-from .forms import RegisterCustomer, LoginCustomer
-from .models import Customer
+from .forms import RegisterCustomer, LoginCustomer, AddressForm
+from .models import Customer, Address
 
 
 def register_customer(request):
@@ -73,5 +73,22 @@ def edit_profile(request):
         return redirect('customer:profile')
 
     return render(request, 'customer/edit_profile.html')
+
+
+def add_address(request):
+    if request.method == 'POST':
+        customer = Customer.objects.get(user=request.user)
+        form = AddressForm(request.POST)
+        if form.is_valid():
+            city = form.cleaned_data.get('city')
+            street = form.cleaned_data.get('street')
+            new_address = Address.objects.create(customer=customer, city=city, street=street)
+            new_address.save()
+    else:
+        form = AddressForm()
+
+    return render(request, 'customer/add_address.html', context={'form': form})
+
+
 
 

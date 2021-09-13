@@ -29,6 +29,7 @@
                 </div>
                 <a href="{% url 'customer:edit_profile' %}">ویرایش اصلاعات شخصی</a>
                 <a href="{% url 'change-password' %}">تغییر رمز عبور</a>
+                <a href="{% url 'customer:add_address' %}">افزودن آدرس</a>
             </div>
         </div>
         <br><br><br>
@@ -40,8 +41,9 @@
                             <th>#</th>
                             <th>محصول</th>
                             <th>تاریخ سفارش</th>
+                            <th>آدرس</th>
+                            <th>تعداد</th>
                             <th>وضعیت</th>
-{#                            <th>{% trans 'Details' %}</th>#}
                         </tr>
                     </thead>
                     <tbody>
@@ -50,8 +52,9 @@
                                 <th scope="row">{{ forloop.counter }}</th>
                                 <td>{{ order.product}}</td>
                                 <td>{{ order.order.placed_at }}</td>
+                                <td>{{ order.order.address }}</td>
+                                <td>{{ order.quantity }}</td>
                                 <td>{{ order.order.payment_status }}</td>
-{#                                <td><a href="{% url 'Order:detail' order.pk %}">{% trans 'Details' %}</a></td>#}
                             </tr>
                         {% endfor %}
                     </tbody>

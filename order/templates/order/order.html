@@ -35,6 +35,16 @@
             <div class="row" style="background-color: white">
 
                 <div class="col-lg-2 border">
+                    <p class="h3c" style="text-align: center">ادرس</p>
+{#                    {{ form.as_p }}#}
+                    <select name="address" style="width: 150px">
+                        {% for address in addresses %}
+                            <option>{{ address }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-lg-2 border">
                     <p class="h3c" style="text-align: center">تعداد</p>
                     <input name="quantity" style="width: 60px; margin-left: 45px" type="number" required>
                 </div>
@@ -62,5 +72,6 @@
     </div>
     <input style="margin-left: 11rem; margin-top: 1rem" type="submit" class="btn btn-success" value="خرید">
         </form>
+
 {#    <a href="{% url 'payment' product.id %}" class="btn btn-success" style="position: relative; left: 170px; margin-top: 20px">پرداخت</a>#}
 {% endblock %}
