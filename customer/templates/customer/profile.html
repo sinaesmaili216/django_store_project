@@ -2,8 +2,31 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block head %}
+
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'customer/css/nav_panel_style.css' %}">
+{% endblock %}
+
 
 {% block body %}
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'customer:edit_profile' %}">ویرایش اصلاعات شخصی</a>
+        <a href="{% url 'change-password' %}">تغییر رمز عبور</a>
+        <a href="{% url 'customer:add_address' %}">افزودن آدرس</a>
+        <a href="{% url 'customer:order_history' %}">تاریخچه سفارشات</a>
+    </div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
+
     <div class="container" style="padding-top: 4rem">
         <div class="row">
             <div class="col-12">
@@ -27,13 +50,10 @@
                         <h5 class="pc">{{ customer.phone }}</h5>
                     </div>
                 </div>
-                <a href="{% url 'customer:edit_profile' %}">ویرایش اصلاعات شخصی</a>
-                <a href="{% url 'change-password' %}">تغییر رمز عبور</a>
-                <a href="{% url 'customer:add_address' %}">افزودن آدرس</a>
-                <a href="{% url 'customer:order_history' %}">تاریخچه سفارشات</a>
             </div>
         </div>
         <br><br><br>
+    <h2 style="text-align: center">سفارشات اخیر</h2>
         <div class="row">
             <div class="col-12">
                 <table class="table table-striped">
@@ -62,5 +82,25 @@
                 </table>
             </div>
         </div>
+    <div>
+
+
     </div>
+
+    </div>
+    </div>
+{#</div>#}
+{#    <div id="mySidenav" class="sidenav">#}
+{#  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>#}
+{#  <a href="#">About</a>#}
+{#  <a href="#">Services</a>#}
+{#  <a href="#">Clients</a>#}
+{#  <a href="#">Contact</a>#}
+{#</div>#}
+{##}
+{#<div id="main">#}
+{#  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>#}
+{#</div>#}
+
+    <script src="{% static 'customer/js/panel_nav.js' %}"></script>
 {% endblock %}
